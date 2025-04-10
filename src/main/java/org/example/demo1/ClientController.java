@@ -4,11 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.file.Files;
 
 public class ClientController {
 
@@ -17,6 +22,8 @@ public class ClientController {
 
     @FXML
     private TextField txtMessage;
+    @FXML
+    private ImageView imageView;
 
     Socket socket;
     DataInputStream dataInputStream;
@@ -44,6 +51,24 @@ public class ClientController {
         dataOutputStream.writeUTF(txtMessage.getText());
         dataOutputStream.flush();
 
+    }
+    @FXML
+    void sendImageOnAction(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        File file=fileChooser.showOpenDialog(new Stage());
+        if (file!=null){
+            try {
+                byte[] imageBytes=
+                        Files.readAllBytes(file.toPath());
+                dataOutputStream.writeUTF("IMAGE");
+                dataOutputStream.writeInt(imageBytes.length);
+                dataOutputStream.write(imageBytes);
+                dataOutputStream.flush();
+                txtArea.appendText(file.getName()+"\n");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }

@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo1.ClientController">
    <children>
@@ -17,9 +17,11 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtArea" layoutX="20.0" layoutY="53.0" prefHeight="300.0" prefWidth="560.0" />
-            <TextField fx:id="txtMessage" layoutX="20.0" layoutY="360.0" prefHeight="25.0" prefWidth="416.0" />
-            <Button layoutX="448.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendOnAction" prefHeight="25.0" prefWidth="128.0" text="SEND" />
+            <TextArea fx:id="txtArea" layoutX="20.0" layoutY="53.0" prefHeight="300.0" prefWidth="411.0" />
+            <TextField fx:id="txtMessage" layoutX="20.0" layoutY="360.0" prefHeight="25.0" prefWidth="411.0" />
+            <Button layoutX="492.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendOnAction" prefHeight="25.0" prefWidth="84.0" text="SEND" />
+            <Button layoutX="436.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendImageOnAction" prefHeight="25.0" prefWidth="53.0" text="File" />
+            <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="148.0" layoutX="438.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
