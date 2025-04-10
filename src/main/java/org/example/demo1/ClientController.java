@@ -60,11 +60,13 @@ public class ClientController {
             try {
                 byte[] imageBytes=
                         Files.readAllBytes(file.toPath());
+                dataOutputStream=new DataOutputStream(socket.getOutputStream());
                 dataOutputStream.writeUTF("IMAGE");
                 dataOutputStream.writeInt(imageBytes.length);
                 dataOutputStream.write(imageBytes);
                 dataOutputStream.flush();
                 txtArea.appendText(file.getName()+"\n");
+                txtArea.appendText(file.getAbsolutePath()+"\n");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

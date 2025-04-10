@@ -4,11 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -19,6 +18,9 @@ public class ServerController {
 
     @FXML
     private TextField txtMessage;
+
+    @FXML
+    private ImageView imageView;
 
     ServerSocket serverSocket;
     Socket socket;
@@ -35,6 +37,15 @@ public class ServerController {
                dataInputStream = new DataInputStream(socket.getInputStream());
                while (true) {
                    message=dataInputStream.readUTF();
+                   if (message.equals("IMAGE")) {
+                       int length=dataInputStream.readInt();
+                       byte[] imageBytes=new byte[length];
+                       dataInputStream.readFully(imageBytes);
+                       ByteArrayInputStream bais=
+                               new ByteArrayInputStream(imageBytes);
+                       Image image=new Image(bais);
+                       imageView.setImage(image);
+                   }
                    txtArea.appendText("Client :"+message+"\n");
                }
            } catch (IOException e) {

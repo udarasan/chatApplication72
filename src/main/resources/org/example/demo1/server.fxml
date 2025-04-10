@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo1.ServerController">
    <children>
@@ -17,9 +17,10 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtArea" layoutX="23.0" layoutY="53.0" prefHeight="290.0" prefWidth="563.0" />
+            <TextArea fx:id="txtArea" layoutX="23.0" layoutY="53.0" prefHeight="290.0" prefWidth="403.0" />
             <TextField fx:id="txtMessage" layoutX="23.0" layoutY="355.0" prefHeight="25.0" prefWidth="397.0" />
             <Button layoutX="437.0" layoutY="355.0" mnemonicParsing="false" onAction="#sendOnAction" prefHeight="25.0" prefWidth="147.0" text="SEND" />
+            <ImageView fx:id="imageView" fitHeight="290.0" fitWidth="153.0" layoutX="433.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
